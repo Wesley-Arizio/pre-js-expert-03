@@ -1,0 +1,17 @@
+[
+  {
+    "id": 0,
+    "name": "Aline",
+    "category": "developer"
+  },
+  {
+    "id": 1,
+    "name": "Marcos",
+    "category": "developer"
+  },
+  {
+    "id": 2,
+    "name": "Carla",
+    "category": "manager"
+  }
+]

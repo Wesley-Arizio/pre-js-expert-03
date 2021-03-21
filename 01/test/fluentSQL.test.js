@@ -69,7 +69,7 @@ describe("Test Suit for fluentSQL builder", () => {
 
   it("pipeline", () => {
     const fluentBuilder = FluentSQLBuilder.for(mocks.data)
-      .where({ category: "dedveloper" })
+      .where({ category: "developer" })
       .where({ name: /^M/ })
       .select(["name", "category"])
       .orderBy("name")

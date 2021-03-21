@@ -15,5 +15,11 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "chalk-table": "^1.0.2",
+    "commander": "^7.1.0",
+    "draftlog": "^1.0.12"
   }
 }

@@ -24,11 +24,35 @@ export default class FluentSQLBuilder {
     return this;
   }
 
+  #validateWhere({ value }) {
+    const isInstanceOfRegex = value instanceof RegExp;
+    const whereFilter = isInstanceOfRegex ? value : new RegExp(value);
+
+    return whereFilter;
+  }
+
   where(query) {
+    if (Array.isArray(query)) {
+      query.map((item) => {
+        const [[prop, selectedValue]] = Object.entries(item);
+
+        const whereFilter = this.#validateWhere({
+          value: selectedValue,
+          query: item,
+        });
+
+        this.#where.push({
+          prop,
+          filter: whereFilter,
+        });
+      });
+
+      return this;
+    }
+
     const [[prop, selectedValue]] = Object.entries(query);
 
-    const isInstanceOfRegex = selectedValue instanceof RegExp;
-    const whereFilter = isInstanceOfRegex ? selectedValue : new RegExp(query);
+    const whereFilter = this.#validateWhere({ value: selectedValue });
 
     this.#where.push({
       prop,
@@ -80,7 +104,6 @@ export default class FluentSQLBuilder {
 
   build() {
     const results = [];
-
     for (const item of this.#database) {
       if (!this.#performWhere(item)) continue;
 
@@ -92,7 +115,6 @@ export default class FluentSQLBuilder {
     }
 
     const finalResult = this.#performOrderBy(results);
-
     return finalResult;
   }
 }

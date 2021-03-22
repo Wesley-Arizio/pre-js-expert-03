@@ -32,7 +32,7 @@ Comando base - a flag --experimental-json-modules é necessaria para importaçã
 
      node --experimental-json-modules src/terminalController.js
 
-Digitando o commando a seguir você pode ver todos os comandos disponiveis
+Digitando o commando a seguir você pode ver todos os comandos disponíveis
 
     node --experimental-json-modules src/terminalController.js --help
 
@@ -81,7 +81,7 @@ Limit
 
 Exemplo completo
 
-    node --experimental-json-modules src/terminalController.js --where 'category:developer' --limit 5 --orderBy name --select name category registered --buildv
+    node --experimental-json-modules src/terminalController.js --where 'category:developer' --limit 5 --orderBy name --select name category registered --build
 
 Resultado esperado
 
